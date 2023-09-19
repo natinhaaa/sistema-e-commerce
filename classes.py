@@ -97,13 +97,13 @@ class Sistema:
             contID += 1
             print(f"ID - {contID}\nNome: {produto.getNome()}\nDescrição: {produto.getDesc()}\nPreço: R${produto.getPreço()}\n")
             total_produtos += produto.getPreço()
-        print(f"TOTAL: {total_produtos}")
+        print(f"TOTAL: R$ {total_produtos}")
     
     def finalizar_compra(self, nome):
         total_produtos = 0
         for produto in self.clientes[nome].getCarrinho_Compras():
             total_produtos += produto.getPreço()
-        print(f"Total da compra: {total_produtos}")
+        print(f"Total da compra: R$ {total_produtos}")
 
         confirm = input("Deseja confirmar a compra? Y/N\n➩  ").upper()
 
