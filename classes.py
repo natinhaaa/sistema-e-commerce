@@ -1,114 +1,115 @@
+#Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
+class Clientes_Loja:
+    def __init__(self, nome, senha):
+        self.nome = nome
+        self.senha = senha
+        self.carrinho = []
+	  
+		#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
+    def getCarrinho_Compras(self):
+        return self.carrinho
+
+######################################################################
+
+#Criamos a seguinte classe apenas para definirmos os atributos que um Produto deve ter neste sistema
 class Produtos:
     def __init__(self, nome, desc, preço):
         self.nome = nome
         self.desc = desc
         self.preço = preço
     
+#Os seguintes gets, servem para retornar o valor atual de cada atributo do objeto Produto, que é único para cada produto criado
     def getNome(self):
         return self.nome
 
     def getDesc(self):
-        return self.nome
+        return self.desc
 
     def getPreço(self):
-        return self.nome
-    
-class Admin:
+        return self.preço
+
+######################################################################
+
+#Nesta classe, encontra-se os métodos que o sistema tem a oferecer ao Cliente
+class Sistema:
     def __init__(self):
         self.clientes = {}
         self.produtos = []
     
-    def cadastrar_produtos(self, nome, desc, preço:int, id:int):
-        self.nome = nome
-        self.desc = desc
-        self.preço = preço
-        self.id = id
-
-        self.produto = [nome, desc, preço, id]
-        self.produtos.append(self.produto)
-
-        print(f"Produto adicionado\nID - {self.getID()}\nNome: {self.getNome()}\nDescrição: {self.getDesc()}\nPreço: R${self.getPreço()}")
+    def cadastrar_produtos(self, nome, desc, preço):
+        produto_cadastrado = Produtos(nome, desc, preço)
+        self.produtos.append(produto_cadastrado)
+        print("Produto adicionado!")
 
     def listar_produtos(self):
-        print("PRODUTOS DISPONÍVEIS")
+        print("Produtos Disponíveis")
+        contID = 0
         for produto in self.produtos:
-            print("______________________________________________________")
-            print (f"ID - {produto[3]}\nNome: {produto[0]}\nDescrição: {produto[1]}\nValor: {produto[2]}")
-
-    def getNome(self):
-        return self.nome
+            contID += 1
+            print(f"ID - {contID}\nNome: {produto.getNome()}\nDescrição: {produto.getDesc()}\nPreço: R${produto.getPreço()}\n")
     
-    def getDesc(self):
-        return self.desc
+    def excluir_produto_loja(self, id_produto):
+        self.produtos.pop(id_produto - 1)
     
-    def getPreço(self):
-        return self.preço
-    
-    def getID(self):
-        return self.id
-    
-    def excluir(self, produto_excluir):
-        self.produtos.pop(produto_excluir - 1)
-        print (f"PRODUTOS DISPONÍVEIS\n")
-        for produto in self.produtos:
-            print("______________________________________________________")
-            print(f"ID - {produto[3]}\nNome: {produto[0]}\nDescrição: {produto[1]}\nValor: {produto[2]}")
-            
-###############################################################################################################
-
-class Clientes_Loja(Admin):
-    def __init__(self):
-        self.nomeCad = None
-        self.senhaCad = None
-        self.cliente = {}
-        self.carrinho = []
-
-    def cadastro(self, nomeCad, senhaCad):
-        if nomeCad not in self.cliente:
-            self.cliente[nomeCad] = senhaCad
-            print("Você foi cadastrado")
+    def cadastro_cliente(self, nome, senha):
+        cliente = Clientes_Loja(nome, senha)
+        if nome not in self.clientes:
+            self.clientes[nome] = cliente
+            print("Você foi cadastrado!")
 
         else:
             print("Nome de usuário já existe.")
-
+    
     def login(self, nome, senha):
-        if nome in self.cliente and self.cliente[nome] == senha:
-            print("Login bem-sucedido!")
-            return True
+        for chave, valor in self.clientes.items():
+            if chave == nome and valor.senha == senha:
+                print("Login bem sucedido.")
+                return True
             
         else:
             print("Nome de usuário ou senha incorretos.")
             return False
-            
-    def adicionar_produto_carrinho(self, produto_add):
-        self.carrinho.append(produto_add)
-        print("Produto adicionado ao carrinho")
-    
-    def listar_carrinho(self):
-        print("PRODUTOS NO CARRINHO")
-        for produto in self.carrinho:
-            print("______________________________________________________")
-            print (f"ID - {produto[3]}\nNome: {produto[0]}\nDescrição: {produto[1]}\nValor: {produto[2]}")
 
-            
-    def excluir_produto(self, produto):
-        self.produto.dell(produto)
+    def getIDproduto(self, id_produto):
+        return self.produtos[id_produto - 1]
 
-        print("______________________________________________________")
-        print(f"Produto excluido\nNome: {self.getNome()}\nDescrição: {self.getDesc()}\nPreço: R${self.getPreço()}\nID: {self.getID()}")
-        print("______________________________________________________")
+#Nestas últimas funções, temos o atributo "nome", que precisa ser passado para podermos confirmar que o produto adicionado no Carrinho de Compras seja o carrinho único de um cliente que o nome seja tal que está dentro da lista de clientes da Loja
     
-    def calcular_total(self):
-        total = 0 
-        for produto in self.produtos:
-            total += produto.valor
-        return total
-    
-    def finalizar_compra(self):
-        print(f"Total da compra: {self.calcular_total()}")
-        print("Compra finalizada")
-        self.carrinho = []
+    def adicionar_produto_carrinho(self, produto_cadastrado, nome):
+        self.clientes[nome].getCarrinho_Compras().append(produto_cadastrado)
+        print("O item foi adicionado ao carrinho!")
 
-    def excluir_carrinho(self):
-        self.carrinho = []
-        print("Carrinho excluido")
+    
+    def listar_carrinho(self, nome):
+        contID = 0
+        for produto in self.clientes[nome].getCarrinho_Compras():
+            contID += 1
+            print(f"{contID}.\nNome: {produto.getNome()}\nDescrição: {produto.getDesc()}\nPreço: R${produto.getPreço()}\n")
+    
+    def excluir_produto_carrinho(self, nome, id_produto):
+        self.clientes[nome].getCarrinho_Compras().pop(id_produto - 1)
+        print("Produto excluído.")
+    
+    def calcular_total(self, nome):
+        total_produtos = 0
+        contID = 0
+        for produto in self.clientes[nome].getCarrinho_Compras():
+            contID += 1
+            print(f"ID - {contID}\nNome: {produto.getNome()}\nDescrição: {produto.getDesc()}\nPreço: R${produto.getPreço()}\n")
+            total_produtos += produto.getPreço()
+        print(f"TOTAL: {total_produtos}")
+    
+    def finalizar_compra(self, nome):
+        total_produtos = 0
+        for produto in self.clientes[nome].getCarrinho_Compras():
+            total_produtos += produto.getPreço()
+        print(f"Total da compra: {total_produtos}")
+
+        confirm = input("Deseja confirmar a compra? Y/N\n➩  ").upper()
+
+        if confirm == "Y":
+            print("Compra finalizada!")
+            return False
+
+        else:
+            return True
