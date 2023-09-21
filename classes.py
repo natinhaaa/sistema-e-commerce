@@ -36,6 +36,13 @@ class Loja:
         self.clientes = {}
         self.produtos = []
     
+
+class Admin:
+    def __init__(self, usuário, senha):
+        self.usuário = usuário
+        self.senha = senha
+
+
     def cadastrar_produtos(self, nome, desc, preço):
         produto_cadastrado = Produtos(nome, desc, preço)
         self.produtos.append(produto_cadastrado)
@@ -113,8 +120,3 @@ class Loja:
 
         else:
             return True
-
-class Admin:
-    def __init__(self, usuário, senha):
-        self.usuário = usuário
-        self.senha = senha
