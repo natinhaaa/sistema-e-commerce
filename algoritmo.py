@@ -75,11 +75,14 @@ def Main():
                                     case 6:
                                         os.system("cls")
                                         print("Finalizar Compra\n")
-                                        admin.finalizar_compra(nome)
-                                        os.system("pause")
-                                        sair2 = True
-                                        sair = True
-                                        return sair2 and sair
+
+                                        if admin.finalizar_compra(nome) == False:
+                                            sair2 = True
+                                            sair = True
+                                            return sair2 and sair
+                                        
+                                        else:
+                                            break
                                     
                                     case 7:
                                         sair2 = True

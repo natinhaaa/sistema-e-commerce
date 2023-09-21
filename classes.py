@@ -5,7 +5,7 @@ class Clientes_Loja:
         self.senha = senha
         self.carrinho = []
 	  
-		#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
+	#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
     def getCarrinho_Compras(self):
         return self.carrinho
 
