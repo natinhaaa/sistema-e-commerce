@@ -32,9 +32,14 @@ class Produtos:
 
 #Nesta classe, encontra-se os métodos que o sistema tem a oferecer ao Cliente
 class Loja:
-    def __init__(self):
+    def __init__(self, nome, endereço, cnpj):
+        self.nome = nome
+        self.endereço = endereço
+        self.cnpj = cnpj
+        
         self.clientes = {}
         self.produtos = []
+        self.admins = {}
     
 
 class Admin:
