@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # Sistema de e-commerce do Grupo 3
-=======
->>>>>>> 5960334175e075866311b1b30b4364575d88e89f
+
 # Loja de Eletronicos - E-Shop
 
 Descrição concisa do projeto.
@@ -24,7 +22,6 @@ Descrição concisa do projeto.
 
 ### Classe Loja
 
-<<<<<<< HEAD
 Super classe, contendo as listas e dicionários;
 
 ### Classe Clientes
@@ -38,18 +35,3 @@ Irá conter a senha e as funções do administrador, que irá realizar funções
 ### Classe Produto
 
 Conterá os atributos dos produtos.
-=======
-Descrição da classe Loja.
-
-### Classe Clientes
-
-Descrição da classe Clientes.
-
-### Classe Administrador
-
-Descrição da classe Administrador.
-
-### Classe Produto
-
-Descrição da classe Produto.
->>>>>>> 5960334175e075866311b1b30b4364575d88e89f
