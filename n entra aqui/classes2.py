@@ -3,10 +3,9 @@ class Loja:
         self.nomeLoja = nomeLoja
         self.endereçoLoja = endereçoLoja
         self.cnpj = cnpj
-
-        self.clientes = {}
         self.produtos = []
         self.admins = {}
+        self.clientes = {}
 
     def getNomeLoja(self):
         return self.nomeLoja
@@ -16,6 +15,24 @@ class Loja:
     
     def getCNPJ(self):
         return self.cnpj
+    
+    def InformaçõesCliente(self, nome, senha, datnasc, cpf, endereço, id):
+        cliente = Clientes(nome, senha, datnasc, cpf, endereço, id)
+        if id not in self.clientes:
+            self.clientes[id] = cliente
+            print("Você foi cadastrado.")
+        
+        else:
+            print("O usuário já está cadastrado")
+    
+    def InformaçõesAdmin(self, usuário, senha):
+        admin = Admin(usuário, senha)
+        if usuário not in self.admins:
+            self.clientes[usuário] = admin
+            print("Você foi cadastrado como administrador.")
+        
+        else:
+            print("O administrador já está cadastrado")
     
 #Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
 class Clientes(Loja):
@@ -90,17 +107,24 @@ class Admin(Clientes, Produtos, Loja):
         self.produtos.pop(id_produto - 1)
     
     def cadastro_cliente(self, nome, senha, datnasc, cpf, endereço, id):
-        cliente = Clientes(nome, senha, datnasc, cpf, endereço, id)
-        if id not in self.clientes:
-            self.clientes[id] = cliente
-            print("Você foi cadastrado!")
-
-        else:
-            print("Nome de usuário já existe.")
+        loja.InformaçõesCliente(nome, senha, datnasc, cpf, endereço, id)
     
-    def login(self, nome, senha):
+    def cadastro_admin(self, usuário, senha):
+        loja.InformaçõesAdmin(usuário, senha)
+
+    def login_cliente(self, nome, senha):
         for chave, valor in self.clientes.items():
             if chave == nome and valor.senha == senha:
+                print("Login bem sucedido.")
+                return True
+            
+        else:
+            print("Nome de usuário ou senha incorretos.")
+            return False
+    
+    def login_admin(self, usuário, senha):
+        for chave, valor in self.admins.items():
+            if chave == usuário and valor.senha == senha:
                 print("Login bem sucedido.")
                 return True
             
@@ -153,4 +177,8 @@ class Admin(Clientes, Produtos, Loja):
         else:
             return True
 
+loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
 ###################################################################################################
+
+class Relatórios(Clientes, Produtos, Loja ):
+    pass

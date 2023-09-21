@@ -20,12 +20,12 @@ def Main():
                 case 1:
                     os.system("cls")
                     print("CLIENTE")
-                    nome = input("Nome\n➩  ")
+                    nome = input("Nome de usuário\n➩  ")
                     senha = int(input("Senha\n➩  "))
 
     #################################################################################################################################################################
                         
-                    match admin.login(nome, senha):
+                    match admin.login_cliente(nome, senha):
                         case True:
                             sair2 = False
                             while sair2 == False:
@@ -101,27 +101,29 @@ def Main():
                     print("ADMIN")
                     print("Para acessar essa área é necessário a senha de administrador.")
                     senhaAdm = int(input("➩  "))
+
                     if senhaAdm == 1234:
                         print("Acessado com sucesso!")
                         os.system("pause")
                         os.system("cls")
-                        
+
                         sair3 = False
                         while sair3 == False:
                             
-                            print("[1] Cadastrar Cliente\n[2] Cadastrar Admin\n[3] Cadastrar Produtos\n[4] Excluir Produtos\n[5] Excluir Clientes\n[6] Listar Clientes\n[7] Listar Produtos\n[8] Sair")
+                            print("[1] Cadastrar Cliente\n[2] Cadastrar Admin\n[3] Cadastrar Produtos\n[4] Excluir Produtos\n[5] Excluir Clientes\n[6] Listar Clientes\n[7] Listar Produtos\n[8] Voltar")
                             função2 = int(input("➩  "))
+
                             match função2:
                                 case 1:
                                     print("Cadastrar Clientes")
-                                    nome = input("Nome de usuário\n➩  ")
-                                    senha = int(input("Senha\n➩  "))
-                                    datnasc = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  ")
-                                    cpf = int(input("CPF\n➩  "))
-                                    endereço = input("Endereço\n➩  ")
+                                    nomeCad = input("Nome de usuário\n➩  ")
+                                    senhaCad = int(input("Senha\n➩  "))
+                                    datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  ")
+                                    cpfCad = int(input("CPF\n➩  "))
+                                    endereçoCad = input("Endereço\n➩  ")
                                     contID += 1
                                     id = contID
-                                    admin.cadastro_cliente(nome, senha, datnasc, cpf, endereço, id)
+                                    admin.cadastro_cliente(nomeCad, senhaCad, datnascCad, cpfCad, endereçoCad, id)
                                     os.system("pause")
                                 
                                 case 2:
@@ -171,10 +173,16 @@ def Main():
                                     
                                 case _:
                                     print("Opção inválida")
+                                    os.system("pause")
 
-                        else:
-                            print("Senha incorreta.")
-                            os.system("pause")               
+                    else:
+                        print("Senha incorreta.")
+
+                case 3:
+                    sair = True
+
+                case _:
+                    print("Valor inválido.")
          
         except Exception as erro:
             print("Ops, algo deu errado. Tente novamente.")

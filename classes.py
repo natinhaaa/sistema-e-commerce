@@ -136,7 +136,7 @@ class Admin(Clientes, Produtos):
 
 ###################################################################################################
 
-class Loja(Clientes, Admin, Produtos):
+class Loja():
     def __init__(self, nomeLoja, endereçoLoja, cnpj):
         self.nomeLoja = nomeLoja
         self.endereçoLoja = endereçoLoja
