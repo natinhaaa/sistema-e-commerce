@@ -113,7 +113,7 @@ class Admin(Clientes, Produtos, Loja):
         loja.InformaçõesAdmin(usuário, senha)
 
     def login_cliente(self, nome, senha):
-        for chave, valor in self.clientes.items():
+        for chave, valor in self.clientes:
             if chave == nome and valor.senha == senha:
                 print("Login bem sucedido.")
                 return True
