@@ -110,8 +110,8 @@ def Main():
                         while sair3 == False:
                             
                             print("[1] Cadastrar Cliente\n[2] Cadastrar Admin\n[3] Cadastrar Produtos\n[4] Excluir Produtos\n[5] Excluir Clientes\n[6] Listar Clientes\n[7] Listar Produtos\n[8] Sair")
-                            função = int(input("➩  "))
-                            match função:
+                            função2 = int(input("➩  "))
+                            match função2:
                                 case 1:
                                     print("Cadastrar Clientes")
                                     nome = input("Nome de usuário\n➩  ")

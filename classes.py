@@ -50,7 +50,7 @@ class Produtos:
 
 #####################################################################################################
 
-class Admin:
+class Admin(Clientes, Produtos):
     def __init__(self, usuário, senhaAdm):
         self.__usuário = usuário
         self.__senhaAdm = senhaAdm

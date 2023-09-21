@@ -1,5 +1,24 @@
+class Loja:
+    def __init__(self, nomeLoja, endereçoLoja, cnpj):
+        self.nomeLoja = nomeLoja
+        self.endereçoLoja = endereçoLoja
+        self.cnpj = cnpj
+
+        self.clientes = {}
+        self.produtos = []
+        self.admins = {}
+
+    def getNomeLoja(self):
+        return self.nomeLoja
+    
+    def getEndereçoLoja(self):
+        return self.endereçoLoja
+    
+    def getCNPJ(self):
+        return self.cnpj
+    
 #Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
-class Clientes:
+class Clientes(Loja):
     def __init__(self, nome, senha, datnasc, cpf, endereço, id):
         self.nome = nome
         self.datnasc = datnasc
@@ -32,7 +51,7 @@ class Clientes:
 #######################################################################################################
 
 #Criamos a seguinte classe apenas para definirmos os atributos que um Produto deve ter neste sistema
-class Produtos:
+class Produtos(Loja):
     def __init__(self, nomeProd, desc, preço):
         self.nomeProd = nomeProd
         self.desc = desc
@@ -50,7 +69,7 @@ class Produtos:
 
 #####################################################################################################
 
-class Admin:
+class Admin(Clientes, Produtos, Loja):
     def __init__(self, usuário, senhaAdm):
         self.__usuário = usuário
         self.__senhaAdm = senhaAdm
@@ -70,10 +89,10 @@ class Admin:
     def excluir_produto_loja(self, id_produto):
         self.produtos.pop(id_produto - 1)
     
-    def cadastro_cliente(self, nome, senha, datnasc, cpf, endereço):
-        cliente = Clientes(nome, senha, datnasc, cpf, endereço)
-        if nome not in self.clientes:
-            self.clientes[nome] = cliente
+    def cadastro_cliente(self, nome, senha, datnasc, cpf, endereço, id):
+        cliente = Clientes(nome, senha, datnasc, cpf, endereço, id)
+        if id not in self.clientes:
+            self.clientes[id] = cliente
             print("Você foi cadastrado!")
 
         else:
@@ -135,22 +154,3 @@ class Admin:
             return True
 
 ###################################################################################################
-
-class Loja(Clientes, Admin, Produtos):
-    def __init__(self, nomeLoja, endereçoLoja, cnpj):
-        self.nomeLoja = nomeLoja
-        self.endereçoLoja = endereçoLoja
-        self.cnpj = cnpj
-
-        self.clientes = {}
-        self.produtos = []
-        self.admins = {}
-
-    def getNomeLoja(self):
-        return self.nomeLoja
-    
-    def getEndereçoLoja(self):
-        return self.endereçoLoja
-    
-    def getCNPJ(self):
-        return self.cnpj
