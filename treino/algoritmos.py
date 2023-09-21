@@ -1,1 +1,0 @@
-from treino.classes2 import *

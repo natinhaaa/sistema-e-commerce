@@ -31,7 +31,7 @@ class Produtos:
 ######################################################################
 
 #Nesta classe, encontra-se os métodos que o sistema tem a oferecer ao Cliente
-class Sistema:
+class Sistema_Loja:
     def __init__(self):
         self.clientes = {}
         self.produtos = []
