@@ -4,21 +4,22 @@ import os
 def Main():
     loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
     admin = Admin()
-    
+
     sair = False
     while sair == False:
         try:
             os.system("cls")
             print("LOJA DE ELETRÔNICOS")
             print("Qual função deseja realizar?\n")
-            print("[1] Login\n[2] Cadastrar\n[3] Loja\n[4] Sair")
+            print("[1] CLIENTE\n[2] ADMIN\n[4] SAIR")
             menu = int(input("➩  "))
             os.system("cls")
 
             match menu:
                 case 1:
                     os.system("cls")
-                    print("LOGIN")
+                    print("CLIENTE")
+                    print("[1] Cadastrar\n[2] Login\n[3] Adicionar produtos ao carrinho\n[4] Excluir produtos\n[5]")
                     nome = input("Nome\n➩  ")
                     senha = int(input("Senha\n➩  "))
 
