@@ -1,7 +1,5 @@
 # Loja de Eletronicos - E-Shop
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
 Descrição concisa do projeto.
 
 ## Funcionalidades
@@ -35,7 +33,3 @@ Descrição da classe Administrador.
 ### Classe Produto
 
 Descrição da classe Produto.
-
-## Licença
-
-Este projeto é licenciado sob os termos da [Licença MIT](LICENSE).
