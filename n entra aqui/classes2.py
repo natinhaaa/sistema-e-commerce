@@ -113,7 +113,8 @@ class Admin(Clientes, Produtos, Loja):
         loja.InformaçõesAdmin(usuário, senha)
 
     def login_cliente(self, nome, senha):
-        if nome in self.clientes and self.clientes[nome].senha == senha:
+        for chave, valor in self.clientes:
+            if chave.nome in self.clientes and valor.senha in self.clientes:
                 print("Login bem sucedido.")
                 return True
             
