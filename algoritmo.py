@@ -2,7 +2,7 @@ from classes import *
 import os
 
 def Main():
-    admin = Sistema_Loja()
+    admin = Loja()
     sair = False
     while sair == False:
         try:

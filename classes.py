@@ -1,5 +1,5 @@
 #Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
-class Clientes_Loja:
+class Clientes:
     def __init__(self, nome, senha):
         self.nome = nome
         self.senha = senha
@@ -31,7 +31,7 @@ class Produtos:
 ######################################################################
 
 #Nesta classe, encontra-se os métodos que o sistema tem a oferecer ao Cliente
-class Sistema_Loja:
+class Loja:
     def __init__(self):
         self.clientes = {}
         self.produtos = []
@@ -52,7 +52,7 @@ class Sistema_Loja:
         self.produtos.pop(id_produto - 1)
     
     def cadastro_cliente(self, nome, senha):
-        cliente = Clientes_Loja(nome, senha)
+        cliente = Clientes(nome, senha)
         if nome not in self.clientes:
             self.clientes[nome] = cliente
             print("Você foi cadastrado!")
@@ -113,3 +113,8 @@ class Sistema_Loja:
 
         else:
             return True
+
+class Admin:
+    def __init__(self, usuário, senha):
+        self.usuário = usuário
+        self.senha = senha
