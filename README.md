@@ -21,7 +21,6 @@ O sistema oferece as seguintes funcionalidades:
 
 -Cadastro de produtos (Administrador)
 -Exclusão de produtos do cadastro (Administrador)
--Cadastro de clientes (Administrador)
 -Exclusão de clientes (Administrador)
 -Cadastro de clientes (Clientes)
 -Realização de login (Clientes)
@@ -30,4 +29,3 @@ O sistema oferece as seguintes funcionalidades:
 -Visualização do carrinho de compras (Clientes)
 -Exclusão de produtos do carrinho (Clientes)
 -Finalização da compra (Clientes)
-
