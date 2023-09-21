@@ -1,31 +1,41 @@
-Projeto de Loja de Eletrônicos - README
+# Loja de Eletronicos - E-Shop
 
-Descrição do Projeto:
-Este projeto consiste em uma loja de eletrônicos com diversas funcionalidades, incluindo o cadastro de produtos e clientes, administração de produtos e compras por parte dos clientes. O sistema é orientado a objetos, com diferentes classes representando as entidades e suas funcionalidades.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Classes
-Classe Loja
-A classe Loja é a superclasse que contém listas e dicionários para gerenciar produtos e clientes. Ela serve como o ponto central do sistema.
+Descrição concisa do projeto.
 
-Classe Clientes
-A classe Clientes representa os clientes da loja e contém métodos e atributos para que os clientes possam realizar compras. Os métodos incluem a adição de produtos ao carrinho, a visualização do carrinho e a finalização da compra.
+## Funcionalidades
 
-Classe Administrador
-A classe Administrador é responsável por gerenciar a loja. Ela possui uma senha para autenticação e funções de administração, como adicionar e excluir produtos do cadastro, bem como adicionar e excluir clientes.
+- [ ] Cadastro de produtos (Administrador)
+- [ ] Exclusão de produtos do cadastro (Administrador)
+- [ ] Cadastro de clientes (Administrador)
+- [ ] Exclusão de clientes (Administrador)
+- [ ] Cadastro de clientes (Clientes)
+- [ ] Realização de login (Clientes)
+- [ ] Adição de produtos ao carrinho (Clientes)
+- [ ] Listagem de produtos disponíveis (Clientes)
+- [ ] Visualização do carrinho de compras (Clientes)
+- [ ] Exclusão de produtos do carrinho (Clientes)
+- [ ] Finalização da compra (Clientes)
 
-Classe Produto
-A classe Produto é responsável por armazenar os atributos dos produtos disponíveis na loja, sendo eles: nome, preço e descrição.
+## Classes
 
-Funcionalidades
-O sistema oferece as seguintes funcionalidades:
+### Classe Loja
 
--Cadastro de produtos (Administrador)
--Exclusão de produtos do cadastro (Administrador)
--Exclusão de clientes (Administrador)
--Cadastro de clientes (Clientes)
--Realização de login (Clientes)
--Adição de produtos ao carrinho (Clientes)
--Listagem de produtos disponíveis (Clientes)
--Visualização do carrinho de compras (Clientes)
--Exclusão de produtos do carrinho (Clientes)
--Finalização da compra (Clientes)
+Descrição da classe Loja.
+
+### Classe Clientes
+
+Descrição da classe Clientes.
+
+### Classe Administrador
+
+Descrição da classe Administrador.
+
+### Classe Produto
+
+Descrição da classe Produto.
+
+## Licença
+
+Este projeto é licenciado sob os termos da [Licença MIT](LICENSE).
