@@ -35,7 +35,3 @@ Descrição da classe Administrador.
 ### Classe Produto
 
 Descrição da classe Produto.
-
-## Licença
-
-Este projeto é licenciado sob os termos da [Licença MIT](LICENSE).
