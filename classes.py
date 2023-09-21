@@ -1,10 +1,28 @@
 #Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
 class Clientes:
-    def __init__(self, nome, senha):
+    def __init__(self, nome, senha, datnasc, cpf, endereço):
         self.nome = nome
+        self.datnasc = datnasc
+        self.cpf = cpf
+        self.endereço = endereço
         self.senha = senha
         self.carrinho = []
 	  
+    def getNome(self):
+        return self.nome
+
+    def getDatNasc(self):
+        return self.datnasc
+    
+    def getCPF(self):
+        return self.cpf
+    
+    def getEndereço(self):
+        return self.endereço
+    
+    def getSenha(self):
+        return self.senha
+    
 	#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
     def getCarrinho_Compras(self):
         return self.carrinho
@@ -36,7 +54,7 @@ class Loja:
         self.nome = nome
         self.endereço = endereço
         self.cnpj = cnpj
-        
+
         self.clientes = {}
         self.produtos = []
         self.admins = {}
