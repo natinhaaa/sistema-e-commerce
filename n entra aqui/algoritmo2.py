@@ -11,7 +11,7 @@ def Main():
     while sair == False:
         try:
             os.system("cls")
-            print(f"Bem-vindo à {loja.getNomeLoja()}. Você pode nos visitar no endereço {loja.getEndereçoLoja()}, aberto 24h.\nCNPJ: {loja.getCNPJ()}")
+            print(f"Bem-vindo à {loja.getNomeLoja()}. Você pode nos visitar no endereço {loja.getEndereçoLoja()}, estamos abertos 24h.\nCNPJ: {loja.getCNPJ()}")
             print("Qual função deseja realizar?\n")
             print("[1] CLIENTE\n[2] ADMIN\n[3] SAIR")
             menu = int(input("➩  "))
