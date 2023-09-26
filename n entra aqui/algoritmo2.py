@@ -3,7 +3,7 @@ import os
 
 def Main():
     loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
-    admin = Admin("Administrador Loja", 1234)
+    admin = Admin("Administrador Loja", 1234)                         
 
     contID = 0
 
@@ -115,30 +115,21 @@ def Main():
 
                             match função2:
                                 case 1:
+                                    cliente = Clientes (nomeCad = input("Nome de usuário\n➩  "), senhaCad = int(input("Senha\n➩  ")), datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  "), cpfCad = int(input("CPF\n➩  ")), endereçoCad = input("Endereço\n➩  "), id = 0)
                                     print("Cadastrar Clientes")
-                                    nomeCad = input("Nome de usuário\n➩  ")
-                                    senhaCad = int(input("Senha\n➩  "))
-                                    datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  ")
-                                    cpfCad = int(input("CPF\n➩  "))
-                                    endereçoCad = input("Endereço\n➩  ")
-                                    contID += 1
-                                    id = contID
-                                    admin.cadastro_cliente(nomeCad, senhaCad, datnascCad, cpfCad, endereçoCad, id)
+                                    id += 1
+                                    admin.cadastro_cliente(cliente, id)
                                     os.system("pause")
                                 
                                 case 2:
                                     print("Cadastrar Administrador")
-                                    nomeAdm = input("Nome de usuário\n➩  ")
-                                    senhaAdm = int(input("Senha\n➩  "))
-                                    admin.cadastro_admin(nomeAdm, senhaAdm)
+                                    admin.cadastro_admin(nome = input("Nome de usuário\n➩  "), senha = int(input("Senha\n➩  ")))
                                     os.system("pause")
 
                                 case 3:
                                     print("Cadastrar produtos")
-                                    nome = input("Nome do produto\n➩  ")
-                                    desc = input("Descrição do produto\n➩  ")
-                                    preço = float(input("Valor do Produto\n➩  R$ "))
-                                    admin.cadastrar_produtos(nome, desc, preço)
+                                    produto = Produtos (nome = input("Digite o nome do produto: "), desc = input("Digite a descrição do produto: "), preço = input("Digite"))
+                                    admin.cadastrar_produtos(produto)
                                     os.system("pause")
 
                                 case 4:
@@ -186,4 +177,4 @@ def Main():
          
         except Exception as erro:
             print("Ops, algo deu errado. Tente novamente.")
-            print(erro.__class__.__name__) 
+            print(erro.__class__.__name__)

@@ -16,8 +16,7 @@ class Loja:
     def getCNPJ(self):
         return self.cnpj
     
-    def InformaçõesCliente(self, nome, senha, datnasc, cpf, endereço, id):
-        cliente = Clientes(nome, senha, datnasc, cpf, endereço, id)
+    def InformaçõesCliente(self, cliente, id):
         if id not in self.clientes:
             self.clientes[id] = cliente
             print("Você foi cadastrado.")
@@ -106,15 +105,18 @@ class Admin(Clientes, Produtos, Loja):
     def excluir_produto_loja(self, id_produto):
         self.produtos.pop(id_produto - 1)
     
-    def cadastro_cliente(self, nome, senha, datnasc, cpf, endereço, id):
-        loja.InformaçõesCliente(nome, senha, datnasc, cpf, endereço, id)
+    def cadastro_cliente(self, cliente, id):
+        loja.InformaçõesCliente(cliente, id)
     
-    def cadastro_admin(self, usuário, senha):
-        loja.InformaçõesAdmin(usuário, senha)
+    def cadastro_admin(self,nome, usuário, senha):
+        self.nome = nome
+        self.usuário = usuário
+        self.senha = senha
+        nome = Admin (usuário = input("Digite o usuário: "), senha = int(input("Digite a senha: ")))
 
-    def login_cliente(self, nome, senha):
+    def login_cliente(self, cliente, id):
         for chave, valor in self.clientes.items():
-            if chave == nome and valor.senha == senha:
+            if chave == id and valor.senha == cliente:
                 print("Login bem sucedido.")
                 return True
             
@@ -178,7 +180,14 @@ class Admin(Clientes, Produtos, Loja):
             return True
 
 loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
+
 ###################################################################################################
 
 # class Relatórios(Clientes, Produtos, Loja ):
-#     pass
+    
+#      def visualizarClientes():
+#          pass
+     
+#      def visualizarProdutos():
+#          pass
+     
