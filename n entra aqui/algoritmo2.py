@@ -115,9 +115,10 @@ def Main():
 
                             match função2:
                                 case 1:
-                                    cliente = Clientes (nomeCad = input("Nome de usuário\n➩  "), senhaCad = int(input("Senha\n➩  ")), datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  "), cpfCad = int(input("CPF\n➩  ")), endereçoCad = input("Endereço\n➩  "), id = 0)
+                                    cliente = Clientes (nomeCad = input("Nome de usuário\n➩  "), senhaCad = int(input("Senha\n➩  ")), datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  "), cpfCad = int(input("CPF\n➩  ")), endereçoCad = input("Endereço\n➩  "))
                                     print("Cadastrar Clientes")
-                                    id += 1
+                                    contID += 1
+                                    id = contID
                                     admin.cadastro_cliente(cliente, id)
                                     os.system("pause")
                                 

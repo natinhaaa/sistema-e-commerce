@@ -106,7 +106,10 @@ class Admin(Clientes, Produtos, Loja):
         self.produtos.pop(id_produto - 1)
     
     def cadastro_cliente(self, cliente, id):
-        loja.InformaçõesCliente(cliente, id)
+        if cliente not in self.clientes:
+            loja.InformaçõesCliente(cliente, id)
+            print("Você foi cadastrado!")
+
     
     def cadastro_admin(self,nome, usuário, senha):
         self.nome = nome
