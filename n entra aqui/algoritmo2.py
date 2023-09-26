@@ -41,7 +41,6 @@ def Main():
                                         os.system("pause")
                                         os.system("cls")
 
-                                    
                                     case 2:
                                         print("Adicionar produtos ao Carrinho")
                                         admin.listar_produtos()
@@ -93,8 +92,7 @@ def Main():
                                     case _:
                                         print("Opção inválida.")
                                         os.system("pause")
-        
-                        
+
 ##########################################################################################################################
                         
                 case 2:
@@ -166,7 +164,6 @@ def Main():
                                 case _:
                                     print("Opção inválida")
                                     os.system("pause")
-
                     else:
                         print("Senha incorreta.")
 

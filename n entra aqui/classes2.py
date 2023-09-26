@@ -49,20 +49,20 @@ class Clientes(Loja):
 
         self.carrinho = []
 
-    def getNomeCad(self):
-        return self.nome
+        def getNomeCad(self):
+            return self.nome
 
-    def getDatNasCad(self):
-        return self.datnasc
+        def getDatNasCad(self):
+            return self.datnasc
     
-    def getCPFCad(self):
-        return self.cpf
+        def getCPFCad(self):
+            return self.cpf
     
-    def getEndereçoCad(self):
-        return self.endereço
+        def getEndereçoCad(self):
+            return self.endereço
     
-    def getSenhaCad(self):
-        return self.senha
+        def getSenhaCad(self):
+            return self.senha
     
 	#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
     def getCarrinho_Compras(self):
@@ -109,24 +109,22 @@ class Admin(Clientes, Produtos, Loja):
     def excluir_produto_loja(self, id_produto):
         self.produtos.pop(id_produto - 1)
     
+##########cadastro
     def cadastro_cliente(self, cliente, id):
-        if cliente not in self.clientes:
             loja.InformaçõesCliente(cliente, id)
-            print("Você foi cadastrado!")
 
-    
     def cadastro_admin(self,nome, usuário, senha):
         self.nome = nome
         self.usuário = usuário
         self.senha = senha
         nome = Admin (usuário = input("Digite o usuário: "), senha = int(input("Digite a senha: ")))
 
+###########login
     def login_cliente(self, cliente, id):
         for chave, valor in self.clientes.items():
             if chave == id and valor.senha == cliente:
                 print("Login bem sucedido.")
                 return True
-            
         else:
             print("Nome de usuário ou senha incorretos.")
             return False
@@ -136,13 +134,14 @@ class Admin(Clientes, Produtos, Loja):
             if chave == usuário and valor.senha == senha:
                 print("Login bem sucedido.")
                 return True
-            
         else:
             print("Nome de usuário ou senha incorretos.")
             return False
 
     def getIDproduto(self, id_produto):
         return self.produtos[id_produto - 1]
+
+##############################################################################################
 
 #Nestas últimas funções, temos o atributo "nome", que precisa ser passado para podermos confirmar que o produto adicionado no Carrinho de Compras seja o carrinho único de um cliente que o nome seja tal que está dentro da lista de clientes da Loja
     def adicionar_produto_carrinho(self, produto_cadastrado, nome):
