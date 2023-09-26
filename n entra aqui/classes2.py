@@ -16,6 +16,8 @@ class Loja:
     def getCNPJ(self):
         return self.cnpj
     
+############################################################################
+    
     def InformaçõesCliente(self, cliente, id):
         if id not in self.clientes:
             self.clientes[id] = cliente
@@ -33,6 +35,8 @@ class Loja:
         else:
             print("O administrador já está cadastrado")
     
+########################################################################################################################
+    
 #Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
 class Clientes(Loja):
     def __init__(self, nome, senha, datnasc, cpf, endereço, id):
@@ -45,19 +49,19 @@ class Clientes(Loja):
 
         self.carrinho = []
 
-    def getNome(self):
+    def getNomeCad(self):
         return self.nome
 
-    def getDatNasc(self):
+    def getDatNasCad(self):
         return self.datnasc
     
-    def getCPF(self):
+    def getCPFCad(self):
         return self.cpf
     
-    def getEndereço(self):
+    def getEndereçoCad(self):
         return self.endereço
     
-    def getSenha(self):
+    def getSenhaCad(self):
         return self.senha
     
 	#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
@@ -141,13 +145,10 @@ class Admin(Clientes, Produtos, Loja):
         return self.produtos[id_produto - 1]
 
 #Nestas últimas funções, temos o atributo "nome", que precisa ser passado para podermos confirmar que o produto adicionado no Carrinho de Compras seja o carrinho único de um cliente que o nome seja tal que está dentro da lista de clientes da Loja
-
-    
     def adicionar_produto_carrinho(self, produto_cadastrado, nome):
         self.clientes[nome].getCarrinho_Compras().append(produto_cadastrado)
         print("O item foi adicionado ao carrinho!")
 
-    
     def listar_carrinho(self, nome):
         contID = 0
         for produto in self.clientes[nome].getCarrinho_Compras():
