@@ -41,7 +41,6 @@ def Main():
                                         os.system("pause")
                                         os.system("cls")
 
-                                    
                                     case 2:
                                         print("Adicionar produtos ao Carrinho")
                                         admin.listar_produtos()
@@ -93,8 +92,7 @@ def Main():
                                     case _:
                                         print("Opção inválida.")
                                         os.system("pause")
-        
-                        
+
 ##########################################################################################################################
                         
                 case 2:
@@ -115,9 +113,10 @@ def Main():
 
                             match função2:
                                 case 1:
-                                    cliente = Clientes(nomeCad = input("Nome de usuário\n➩  "), senhaCad = int(input("Senha\n➩  ")), datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  "), cpfCad = int(input("CPF\n➩  ")), endereçoCad = input("Endereço\n➩  "), id = 0)
+                                    cliente = Clientes (nomeCad = input("Nome de usuário\n➩  "), senhaCad = int(input("Senha\n➩  ")), datnascCad = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  "), cpfCad = int(input("CPF\n➩  ")), endereçoCad = input("Endereço\n➩  "), id = 0)
                                     print("Cadastrar Clientes")
-                                    id += 1
+                                    contID += 1
+                                    id = contID
                                     admin.cadastro_cliente(cliente, id)
                                     os.system("pause")
                                 
@@ -165,7 +164,6 @@ def Main():
                                 case _:
                                     print("Opção inválida")
                                     os.system("pause")
-
                     else:
                         print("Senha incorreta.")
 
