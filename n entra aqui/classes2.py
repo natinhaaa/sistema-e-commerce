@@ -113,9 +113,10 @@ class Admin(Clientes, Produtos, Loja):
         loja.InformaçõesAdmin(usuário, senha)
 
     def login_cliente(self, nome, senha):
-        if nome in self.clientes.items() and senha in self.clientes.items():
-            print("Login bem sucedido.")
-            return True
+        for chave, valor in self.clientes.items():
+            if chave == nome and valor.senha == senha:
+                print("Login bem sucedido.")
+                return True
             
         else:
             print("Nome de usuário ou senha incorretos.")
@@ -179,5 +180,5 @@ class Admin(Clientes, Produtos, Loja):
 loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
 ###################################################################################################
 
-class Relatórios(Clientes, Produtos, Loja ):
-    pass
+# class Relatórios(Clientes, Produtos, Loja ):
+#     pass
