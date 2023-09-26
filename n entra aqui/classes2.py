@@ -16,6 +16,9 @@ class Loja:
     def getCNPJ(self):
         return self.cnpj
     
+    def getClientes(self):
+        return self.clientes
+    
 ############################################################################
     
     def InformaçõesCliente(self, cliente, id):
@@ -113,11 +116,11 @@ class Admin(Clientes, Produtos, Loja):
     def cadastro_cliente(self, cliente, id):
             loja.InformaçõesCliente(cliente, id)
 
-    def cadastro_admin(self,nome, usuário, senha):
+    def cadastro_admin(self, nome, usuário, senha):
         self.nome = nome
         self.usuário = usuário
         self.senha = senha
-        nome = Admin (usuário = input("Digite o usuário: "), senha = int(input("Digite a senha: ")))
+        # nome = Admin(usuário = input("Digite o usuário: "), senha = int(input("Digite a senha: ")))
 
 ###########login
     def login_cliente(self, cliente, id):
