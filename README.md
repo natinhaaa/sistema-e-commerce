@@ -12,11 +12,13 @@ Descrição concisa do projeto.
 ## Funcionalidades
 
 - [ ] Cadastro de produtos (Administrador)
+- [ ] Cadastro de clientes (Administrador)
+- [ ] Cadastro de administradores (Administrador)
 - [ ] Exclusão de produtos do cadastro (Administrador)
-- [ ] Cadastro de clientes (Administrador)
 - [ ] Exclusão de clientes (Administrador)
-- [ ] Cadastro de clientes (Administrador)
+- [ ] Exclusão de administradores (Administrador)
 - [ ] Realização de login (Administrador)
+- [ ] Apresentar relatório de compras e venda (Administrador)
 - [ ] Realização de login (Clientes)
 - [ ] Adição de produtos ao carrinho (Clientes)
 - [ ] Listagem de produtos disponíveis (Clientes)
