@@ -51,8 +51,11 @@ Irá conter os métodos e atributos do administrador, que irá gerenciar os prod
 Usamos 3 bibliotecas nesse software.
 
 1 - **os** - Usamos para pause e para limpar a tela do terminal, para que o programa fique mais organizado e bonito.
+
 2 - **time** - Usamos para dar um tempo entre as ações do programa, para que o usuário possa ler as informações.
+
 3 - **random** - Usamos para gerar número aleatório para o compravante da compra do produto.
+
 4 - **string** - Usamos para gerar letras aleatórias para o compravante da compra do produto.
 
 ## Autores

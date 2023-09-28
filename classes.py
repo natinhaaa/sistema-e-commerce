@@ -198,6 +198,7 @@ class Admin:
 
         confirm = input("Deseja confirmar a compra? Y/N\n➩  ").upper()
 
+#########caso a variável confirm seja atribuida ao valor de y, serão salvos os dados no dicionário
         if confirm == "Y":
             carrinho_cliente = self.clientes[nome].getCarrinho_Compras()
             relatorio_cliente = []
@@ -211,7 +212,8 @@ class Admin:
 
         else:
             return True
-
+        
+######funções que servirão para imprimir o histórico de compras dos clientes e o histórico de vendas da loja.
     def historico_compras(self):
         print("Compras realizadas dentro da E-Shop:")
         print(self.relatorios)
