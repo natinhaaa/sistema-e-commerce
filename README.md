@@ -10,7 +10,8 @@ Descrição concisa do projeto.
 - [ ] Exclusão de produtos do cadastro (Administrador)
 - [ ] Cadastro de clientes (Administrador)
 - [ ] Exclusão de clientes (Administrador)
-- [ ] Cadastro de clientes (Clientes)
+- [ ] Cadastro de clientes (Administrador)
+- [ ] Realização de login (Administrador)
 - [ ] Realização de login (Clientes)
 - [ ] Adição de produtos ao carrinho (Clientes)
 - [ ] Listagem de produtos disponíveis (Clientes)
@@ -26,7 +27,7 @@ Super classe, contendo as listas e dicionários;
 
 ### Classe Clientes
 
-Irá conter os métodos e atributos do cliente, que irá realizar a compra;
+Irá conter os métodos e atributos do cliente, que irá realizar a compra e utilizar o carrinho;
 
 ### Classe Administrador
 
