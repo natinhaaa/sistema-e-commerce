@@ -3,13 +3,13 @@ import os
 
 def Main():
     loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
-    admin = Admin("Administrador Loja", 1234)                         
+    admin = Admin("Administrador Loja", 1234)
 
     contID = 0
 
     sair = False
     while sair == False:
-        try:
+        try: #oi
             os.system("cls")
             print(f"Bem-vindo à {loja.getNomeLoja()}. Você pode nos visitar no endereço {loja.getEndereçoLoja()}, estamos abertos 24h.\nCNPJ: {loja.getCNPJ()}")
             print("Qual função deseja realizar?\n")
@@ -24,7 +24,7 @@ def Main():
                     senha = int(input("Senha\n➩  "))
 
     #################################################################################################################################################################
-                    
+
                     match admin.login_cliente(nome, senha):
                         case True:
                             sair2 = False
