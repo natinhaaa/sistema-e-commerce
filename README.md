@@ -1,4 +1,4 @@
-# Sistema de e-commerce do Grupo 3
+# Sistema de E-Commerce do Grupo 3
 
 ## Objetivos
 
