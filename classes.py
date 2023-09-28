@@ -13,7 +13,6 @@ class Loja:
     def getEndereçoLoja(self):
         return self.endereço
 
-
 #Criamos a seguinte classe apenas para definirmos os atributos que um Produto deve ter neste sistema
 class Produtos:
     def __init__(self, nome, desc, preço):
@@ -76,8 +75,14 @@ class Admin:
         self.clientes = {}
         self.produtos = []
         self.admins = {}
-        self.compras = {}
-        
+        self.relatorios = {}
+    
+    def getUsuário(self):
+        return self.usuário
+    
+    def getSenha(self):
+        return self.senha
+    
     def cadastrar_produtos(self, nome, desc, preço):
         produto_cadastrado = Produtos(nome, desc, preço)
         self.produtos.append(produto_cadastrado)
@@ -135,14 +140,27 @@ class Admin:
         for cliente in self.clientes.values():
             print(f"ID - {cliente.getID()}\nNome: {cliente.getNome()}\nSenha: {cliente.getSenha()}\nData de Nascimento: {cliente.getDataNasc()}\nCPF: {cliente.getCPF()}\nEndereço: {cliente.getEndereço()}")
 
-    def excluir_clientes(self, id_clienteex):
-        for id in self.clientes.values():
-            if id == id_clienteex:
-                self.clientes.pop(id - 1)
-                print("Cliente excluído.")
-            
-            else:
-                print("O cliente não existe.")
+    def listar_admins(self):
+        contID = 0
+        for admin in self.admins.values():
+            contID += 1
+            print(f"ID - {contID}\nNome de usuário: {admin.getUsuário()}\nSenha: {admin.getSenha()}\n")
+
+    def excluir_clientes(self, clienteex):
+        if clienteex in self.clientes.keys():
+            del self.clientes[clienteex]
+            print("Cliente excluído.")
+        
+        else:
+            print("O cliente não existe.")
+    
+    def excluir_admin(self, adminex):
+        if adminex in self.admins.keys():
+            del self.admins[adminex]
+            print("Admin excluído.")
+        
+        else:
+            print("O admin não existe.")
 
     def getIDproduto(self, id_produto):
         return self.produtos[id_produto - 1]
@@ -153,7 +171,6 @@ class Admin:
         self.clientes[nome].getCarrinho_Compras().append(produto_cadastrado)
         print("O item foi adicionado ao carrinho!")
 
-    
     def listar_carrinho(self, nome):
         contID = 0
         for produto in self.clientes[nome].getCarrinho_Compras():
@@ -174,7 +191,6 @@ class Admin:
         print(f"TOTAL: {total_produtos}")
     
     def finalizar_compra(self, nome):
-        
         total_produtos = 0
         for produto in self.clientes[nome].getCarrinho_Compras():
             total_produtos += produto.getPreço()
@@ -183,27 +199,25 @@ class Admin:
         confirm = input("Deseja confirmar a compra? Y/N\n➩  ").upper()
 
         if confirm == "Y":
-            compra_cliente = {
-            'cliente': nome,
-            'produtos_comprados': self.clientes[nome].getCarrinho_Compras()
-            }
-            self.compras = compra_cliente
-            print(self.compras)
+            carrinho_cliente = self.clientes[nome].getCarrinho_Compras()
+            for produto_comprado in carrinho_cliente:
+                produtoinfo = (f"Produto Comprado: {produto_comprado.getNome()}, Preço: {produto_comprado.getPreço()}")
+                self.relatorios[self.clientes[nome].getNome()] = produtoinfo
+                print(self.relatorios)
+                
             print("Compra finalizada!")
             return False
+
         else:
             return True
 
-    def getCompras(self):
-        self.compras.append(Admin.finalizar_compra)
-        return self.compras
-
-class Relatório:
-
     def historico_compras(self):
-        print("Compras realizadas:")
-        print(f"Cliente: {Admin.getCompras.nome}", "Compras realizadas:", Admin.getCompras.self.compras)
-        
+        print("Compras realizadas dentro da E-Shop:")
+        print(self.relatorios)
+        # for cliente, produto in self.relatorios.items():
+        #     print(f"{cliente}\n{produto}\n")
+    
     def vendas_loja(self):
         print("Vendas realizadas:")
-        print(Admin.getCompras.self.compras)
+        for produto in self.relatorios.values():
+            print(f"{produto}")

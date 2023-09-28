@@ -1,5 +1,10 @@
 # Sistema de e-commerce do Grupo 3
 
+# Objetivos
+
+Criar um sistema de E-commerce para uma loja de eletrônicos, 
+onde o cliente poderá realizar a compra de produtos e o administrador poderá gerenciar os produtos e clientes.
+
 # Loja de Eletronicos - E-Shop
 
 Descrição concisa do projeto.
@@ -19,23 +24,27 @@ Descrição concisa do projeto.
 - [ ] Exclusão de produtos do carrinho (Clientes)
 - [ ] Finalização da compra (Clientes)
 
+## Tela Inicial
+
+Na tela inicial temos uma breve introdução sobre a loja E-Shop, com seu endereço, horario de funcionamento e CNPJ. Além disso, temos um menu com as opções de: **1 Login Cliente** - Nele teremos que logar como um cliente da loja, e poderemos realizar opções que um cliente faz, como adicionar produtos ao carrinho, finalizar a compra, etc. **2 Login Administrador** - Nele teremos que logar como um administrador da loja, e poderemos realizar opções que um administrador faz, como adicionar produtos ao estoque, excluir produtos do estoque, etc. **3 Sair** - Nele sairemos do programa. 
+
 ## Classes
 
 ### Classe Loja
 
 Super classe, contendo as listas e dicionários;
 
-### Classe Clientes
-
-Irá conter os métodos e atributos do cliente, que irá realizar a compra e utilizar o carrinho;
-
-### Classe Administrador
-
-Irá conter a senha e as funções do administrador, que irá realizar funções de gerenciamento da loja, como adicionar produto;
-
 ### Classe Produto
 
-Conterá os atributos dos produtos.
+Irá conter os métodos e atributos do produto, que irá ser adicionado ao carrinho;
+
+### Classe Clientes
+
+Irá conter os métodos e atributos do cliente, que irá realizar a compra;
+
+### Classe Admin
+
+Irá conter os métodos e atributos do administrador, que irá gerenciar os produtos e clientes;
 
 ## Autores
 
