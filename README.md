@@ -43,7 +43,7 @@ Conterá os atributos dos produtos.
     <tr>
         <td align="center" >
         <a href="https://github.com/alemes7">
-            <img src="https://avatars.githubusercontent.com/alemes7" width="115px;" alt="Foto_Mirella"/><br>
+            <img src="https://avatars.githubusercontent.com/alemes7" width="115px;" alt="Foto_Alexandre"/><br>
             <sub>
             <b>Alexandre Lemes</b>
             </sub>
@@ -51,7 +51,7 @@ Conterá os atributos dos produtos.
         </td>
         <td align="center">
         <a href="https://github.com/Allerim321">
-            <img src="https://avatars.githubusercontent.com/Allerim321" width="115px;" alt="Foto_Alexandre"/><br>
+            <img src="https://avatars.githubusercontent.com/Allerim321" width="115px;" alt="Foto_Mirella"/><br>
             <sub>
             <b>Mirella Turqueti</b>
             </sub>

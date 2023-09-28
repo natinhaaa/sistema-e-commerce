@@ -1,20 +1,57 @@
-#Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
-class Clientes:
-    def __init__(self, nome, senha, datnasc, cpf, endereço, id):
+class Loja:
+    def __init__(self, nome, cnpj, endereço):
         self.nome = nome
-        self.datnasc = datnasc
-        self.cpf = cpf
+        self.cnpj = cnpj
         self.endereço = endereço
-        self.senha = senha
-        self.id = id
 
-        self.carrinho = []
+    def getNomeLoja(self):
+        return self.nome
+    
+    def getCNPJ(self):
+        return self.cnpj
+    
+    def getEndereçoLoja(self):
+        return self.endereço
 
+
+#Criamos a seguinte classe apenas para definirmos os atributos que um Produto deve ter neste sistema
+class Produtos:
+    def __init__(self, nome, desc, preço):
+        self.nome = nome
+        self.desc = desc
+        self.preço = preço
+    
+#Os seguintes gets, servem para retornar o valor atual de cada atributo do objeto Produto, que é único para cada produto criado
     def getNome(self):
         return self.nome
 
-    def getDatNasc(self):
-        return self.datnasc
+    def getDesc(self):
+        return self.desc
+
+    def getPreço(self):
+        return self.preço
+    
+#############################################################################################
+
+#Criamos a seguinte classe apenas para definirmos os atributos que um Cliente deve ter nesse sistema
+class Clientes:
+    def __init__(self, nome, senha, datanasc, cpf, endereço, id):
+        self.nome = nome
+        self.senha = senha
+        self.datanasc = datanasc
+        self.cpf = cpf
+        self.endereço = endereço
+        self.id = id
+        self.carrinho = []
+	
+    def getNome(self):
+        return self.nome
+    
+    def getSenha(self):
+        return self.senha
+    
+    def getDataNasc(self):
+        return self.datanasc
     
     def getCPF(self):
         return self.cpf
@@ -22,39 +59,25 @@ class Clientes:
     def getEndereço(self):
         return self.endereço
     
-    def getSenha(self):
-        return self.senha
+    def getID(self):
+        return self.id
     
-	#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
+		#Vai retornar o valor que se encontra dentro do carrinho, que é único para cada Cliente
     def getCarrinho_Compras(self):
         return self.carrinho
 
-#######################################################################################################
+#########################################################################################
 
-#Criamos a seguinte classe apenas para definirmos os atributos que um Produto deve ter neste sistema
-class Produtos:
-    def __init__(self, nomeProd, desc, preço):
-        self.nomeProd = nomeProd
-        self.desc = desc
-        self.preço = preço
-    
-#Os seguintes gets, servem para retornar o valor atual de cada atributo do objeto Produto, que é único para cada produto criado
-    def getNomeProd(self):
-        return self.nomeProd
-
-    def getDesc(self):
-        return self.desc
-
-    def getPreço(self):
-        return self.preço
-
-#####################################################################################################
-
-class Admin(Clientes, Produtos):
-    def __init__(self, usuário, senhaAdm):
-        self.__usuário = usuário
-        self.__senhaAdm = senhaAdm
-
+#Nesta classe, encontra-se os métodos que o sistema tem a oferecer ao Cliente
+class Admin:
+    def __init__(self, usuário, senha):
+        self.usuário = usuário
+        self.senha = senha
+        self.clientes = {}
+        self.produtos = []
+        self.admins = {}
+        self.compras = {}
+        
     def cadastrar_produtos(self, nome, desc, preço):
         produto_cadastrado = Produtos(nome, desc, preço)
         self.produtos.append(produto_cadastrado)
@@ -70,8 +93,8 @@ class Admin(Clientes, Produtos):
     def excluir_produto_loja(self, id_produto):
         self.produtos.pop(id_produto - 1)
     
-    def cadastro_cliente(self, nome, senha, datnasc, cpf, endereço):
-        cliente = Clientes(nome, senha, datnasc, cpf, endereço)
+    def cadastro_cliente(self, nome, senha, datanasc, cpf, endereço, id):
+        cliente = Clientes(nome, senha, datanasc, cpf, endereço, id)
         if nome not in self.clientes:
             self.clientes[nome] = cliente
             print("Você foi cadastrado!")
@@ -79,7 +102,16 @@ class Admin(Clientes, Produtos):
         else:
             print("Nome de usuário já existe.")
     
-    def login(self, nome, senha):
+    def cadastro_admin(self, usuário, senha):
+        admin = Admin(usuário, senha)
+        if usuário not in self.admins:
+            self.admins[usuário] = admin
+            print("Você foi cadastrado como admin!")
+        
+        else:
+            print("Nome de usuário já existe.")
+    
+    def login_cliente(self, nome, senha):
         for chave, valor in self.clientes.items():
             if chave == nome and valor.senha == senha:
                 print("Login bem sucedido.")
@@ -88,12 +120,34 @@ class Admin(Clientes, Produtos):
         else:
             print("Nome de usuário ou senha incorretos.")
             return False
+    
+    def login_admin(self, usuário, senha):
+        for chave, valor in self.admins.items():
+            if chave == usuário and valor.senha == senha:
+                print("Login bem sucedido.")
+                return True
+                     
+            else:
+                print("Nome de usuário ou senha incorretos.")
+                return False
+    
+    def listar_clientes(self):
+        for cliente in self.clientes.values():
+            print(f"ID - {cliente.getID()}\nNome: {cliente.getNome()}\nSenha: {cliente.getSenha()}\nData de Nascimento: {cliente.getDataNasc()}\nCPF: {cliente.getCPF()}\nEndereço: {cliente.getEndereço()}")
+
+    def excluir_clientes(self, id_clienteex):
+        for id in self.clientes.values():
+            if id == id_clienteex:
+                self.clientes.pop(id - 1)
+                print("Cliente excluído.")
+            
+            else:
+                print("O cliente não existe.")
 
     def getIDproduto(self, id_produto):
         return self.produtos[id_produto - 1]
 
 #Nestas últimas funções, temos o atributo "nome", que precisa ser passado para podermos confirmar que o produto adicionado no Carrinho de Compras seja o carrinho único de um cliente que o nome seja tal que está dentro da lista de clientes da Loja
-
     
     def adicionar_produto_carrinho(self, produto_cadastrado, nome):
         self.clientes[nome].getCarrinho_Compras().append(produto_cadastrado)
@@ -117,40 +171,39 @@ class Admin(Clientes, Produtos):
             contID += 1
             print(f"ID - {contID}\nNome: {produto.getNome()}\nDescrição: {produto.getDesc()}\nPreço: R${produto.getPreço()}\n")
             total_produtos += produto.getPreço()
-        print(f"TOTAL: R$ {total_produtos}")
+        print(f"TOTAL: {total_produtos}")
     
     def finalizar_compra(self, nome):
+        
         total_produtos = 0
         for produto in self.clientes[nome].getCarrinho_Compras():
             total_produtos += produto.getPreço()
-        print(f"Total da compra: R$ {total_produtos}")
+        print(f"Total da compra: {total_produtos}")
 
         confirm = input("Deseja confirmar a compra? Y/N\n➩  ").upper()
 
         if confirm == "Y":
+            compra_cliente = {
+            'cliente': nome,
+            'produtos_comprados': self.clientes[nome].getCarrinho_Compras()
+            }
+            self.compras = compra_cliente
+            print(self.compras)
             print("Compra finalizada!")
             return False
-
         else:
             return True
 
-###################################################################################################
+    def getCompras(self):
+        self.compras.append(Admin.finalizar_compra)
+        return self.compras
 
-class Loja():
-    def __init__(self, nomeLoja, endereçoLoja, cnpj):
-        self.nomeLoja = nomeLoja
-        self.endereçoLoja = endereçoLoja
-        self.cnpj = cnpj
+class Relatório:
 
-        self.clientes = {}
-        self.produtos = []
-        self.admins = {}
-
-    def getNomeLoja(self):
-        return self.nomeLoja
-    
-    def getEndereçoLoja(self):
-        return self.endereçoLoja
-    
-    def getCNPJ(self):
-        return self.cnpj
+    def historico_compras(self):
+        print("Compras realizadas:")
+        print(f"Cliente: {Admin.getCompras.nome}", "Compras realizadas:", Admin.getCompras.self.compras)
+        
+    def vendas_loja(self):
+        print("Vendas realizadas:")
+        print(Admin.getCompras.self.compras)
