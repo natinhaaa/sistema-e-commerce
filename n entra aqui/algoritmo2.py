@@ -33,6 +33,7 @@ def Main():
                                 print("Escolha alguma das opções abaixo.\n")
                                 print("[1] Listar produtos\n[2] Adicionar produtos ao carrinho\n[3] Visualizar carrinho\n[4] Excluir produtos do carrinho\n[5] Total Carrinho\n[6] Prosseguir para a compra\n[7] Voltar")
                                 função = int(input("➩  "))
+                                
                                 match função:
                                     case 1:
                                         os.system("cls")
