@@ -1,6 +1,6 @@
 # Sistema de e-commerce do Grupo 3
 
-# Objetivos
+## Objetivos
 
 Criar um sistema de E-commerce para uma loja de eletrônicos, 
 onde o cliente poderá realizar a compra de produtos e o administrador poderá gerenciar os produtos e clientes.
@@ -45,6 +45,15 @@ Irá conter os métodos e atributos do cliente, que irá realizar a compra;
 ### Classe Admin
 
 Irá conter os métodos e atributos do administrador, que irá gerenciar os produtos e clientes;
+
+## Bibliotecas
+
+Usamos 3 bibliotecas nesse software.
+
+1 - **os** - Usamos para pause e para limpar a tela do terminal, para que o programa fique mais organizado e bonito.
+2 - **time** - Usamos para dar um tempo entre as ações do programa, para que o usuário possa ler as informações.
+3 - **random** - Usamos para gerar número aleatório para o compravante da compra do produto.
+4 - **string** - Usamos para gerar letras aleatórias para o compravante da compra do produto.
 
 ## Autores
 

@@ -1,5 +1,8 @@
 from classes import *
+import string
+import random
 import os
+import time
 
 def Main():
     admin = Admin("admin", 1234)
@@ -46,6 +49,7 @@ def Main():
 
                                     
                                     case 2:
+                                        os.system("cls")
                                         print("Adicionar produtos ao Carrinho")
                                         admin.listar_produtos()
                                         print("\nQual o ID do item você deseja adicionar ao carrinho?")
@@ -55,6 +59,7 @@ def Main():
                                         os.system("cls")
                                 
                                     case 3:
+                                        os.system("cls")
                                         print("Visualizar o carrinho\n")
                                         print("Esses são os produtos dentro do seu carrinho:\n")
                                         admin.listar_carrinho(nome)
@@ -82,15 +87,18 @@ def Main():
                                         os.system("cls")
                                         print("Finalizar Compra\n")
                                         admin.finalizar_compra(nome)
+                                        print(f"Código de compra: {gerar_numero_pedido()}")
                                         os.system("pause")
                                         saircliente = 0
                                     
                                     case 7:
                                         saircliente = 0
+                                        a_mimir()
                                     
                                     case _:
                                         print("Opção inválida.")
                                         os.system("pause")
+                                        os.system("cls")
 
                         
                         case False:
@@ -115,12 +123,13 @@ def Main():
                                 print("Escolha alguma das opções abaixo.\n")
                                 print("[1] Cadastrar Clientes\n[2] Cadastrar Admins\n[3] Cadastrar Produtos\n[4] Listar Clientes\n[5] Listar Admins\n[6] Listar Produtos\n[7] Excluir Clientes\n[8] Excluir Admins\n[9] Excluir Produtos\n[10] Relatórios\n[0] Voltar")
                                 loja = int(input("➩  "))
+                                os.system("cls")
 
                                 match loja:
                                     case 1:
                                         print("Cadastrar Clientes")
                                         nomeCad = input("Nome de usuário\n➩  ")
-                                        datanasc = input("Data de Nascimento (formato: dd/mm/AAAA)")
+                                        datanasc = input("Data de Nascimento (formato: dd/mm/AAAA)\n➩  ")
                                         cpf = int(input("CPF\n➩  "))
                                         endereço = input("Endereço\n➩  ")
                                         senhaCad = int(input("Senha\n➩  "))
@@ -206,21 +215,31 @@ def Main():
 
                                         match rel:
                                             case 1:
+                                                os.system("cls")
                                                 print("Histórico de Compras de Clientes")
                                                 admin.historico_compras()
                                                 os.system("pause")
                                                 os.system("cls")
                                             
                                             case 2:
+                                                os.system("cls")
                                                 print("Vendas da Loja")
                                                 admin.vendas_loja()
                                                 os.system("pause")
                                                 os.system("cls")
-
-                                    
-                                    
+                                            
+                                            case 3:
+                                                os.system("cls")
+                                                a_mimir()
+                                            
+                                            case _:
+                                                print("Opção inválida.")
+                                                os.system("pause")
+                                                os.system("cls")
+                                                
                                     case 0:
                                         sairadmin = 0
+                                        a_mimir()
                                     
                                     case _:
                                         print("Opção inválida.")
@@ -235,6 +254,7 @@ def Main():
 
                 case 3:
                     sairmenu = 0
+                    a_mimir()
 
                 case _:
                     print("Opção inválida.")
@@ -242,3 +262,15 @@ def Main():
         except Exception as erro:
             print("Ops, algo deu errado. Tente novamente.")
             print(erro.__class__.__name__)
+
+def a_mimir():
+    print("Saindo...")
+    time.sleep(1)
+
+def gerar_numero_aleatorio(length):
+    caracteres = string.ascii_uppercase + string.digits
+    return "".join(random.choice(caracteres) for _ in range(length))
+
+def gerar_numero_pedido():
+    numero_pedido = f"#{gerar_numero_aleatorio(2)}{gerar_numero_aleatorio(2)}{gerar_numero_aleatorio(2)}{gerar_numero_aleatorio(2)}{gerar_numero_aleatorio(3)}"
+    return numero_pedido

@@ -200,10 +200,11 @@ class Admin:
 
         if confirm == "Y":
             carrinho_cliente = self.clientes[nome].getCarrinho_Compras()
+            relatorio_cliente = []
             for produto_comprado in carrinho_cliente:
                 produtoinfo = (f"Produto Comprado: {produto_comprado.getNome()}, Preço: {produto_comprado.getPreço()}")
-                self.relatorios[self.clientes[nome].getNome()] = produtoinfo
-                print(self.relatorios)
+                relatorio_cliente.append(produtoinfo)
+            self.relatorios[f"Cliente: {self.clientes[nome].getNome()}"] = relatorio_cliente
                 
             print("Compra finalizada!")
             return False
@@ -214,10 +215,9 @@ class Admin:
     def historico_compras(self):
         print("Compras realizadas dentro da E-Shop:")
         print(self.relatorios)
-        # for cliente, produto in self.relatorios.items():
-        #     print(f"{cliente}\n{produto}\n")
     
     def vendas_loja(self):
         print("Vendas realizadas:")
         for produto in self.relatorios.values():
-            print(f"{produto}")
+            print(produto)
+    
