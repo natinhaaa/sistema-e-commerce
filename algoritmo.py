@@ -2,13 +2,15 @@ from classes import *
 import os
 
 def Main():
-    loja = Loja("E-Shop", "Avenida 9 de Julho", "35.463.434/0001-02")
     admin = Admin("Administrador Loja", 1234)
 
     contID = 0
 
     sair = False
     while sair == False:
+        
+        loja = Loja("E-Shop", "35.463.434/0001-02", "Avenida 9 de Julho")
+
         try:
             os.system("cls")
             print(f"Bem-vindo à {loja.getNomeLoja()}. Você pode nos visitar no endereço {loja.getEndereçoLoja()}, aberto 24h.\nCNPJ: {loja.getCNPJ()}")

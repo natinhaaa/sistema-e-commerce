@@ -15,12 +15,14 @@ def gerar_numero_pedido(length):
 
 def Main():
     admin = Admin("admin", 1234)
-    loja = Loja("E-Shop", "35.463.434/0001-02", "Avenida 9 de Julho")
 
     contID = 0
 
     sair = False
     while sair == False:
+
+        loja = Loja("E-Shop", "35.463.434/0001-02", "Avenida 9 de Julho")
+        
         try:
             os.system("cls")
             print(f"Bem-vindo à {loja.getNomeLoja()}. Você pode nos visitar no endereço {loja.getEndereçoLoja()}, aberto 24h.\nCNPJ: {loja.getCNPJ()}")
@@ -92,7 +94,8 @@ def Main():
                                         os.system("cls")
                                         print("Finalizar Compra\n")
                                         admin.finalizar_compra(nome)
-                                        numero_pedido = gerar_numero_pedido
+                                        numero_pedido = gerar_numero_pedido(5)
+                                        print(numero_pedido)
                                         os.system("pause")
                                         sair2 = True
                                         sair = True
@@ -119,10 +122,10 @@ def Main():
                     usuário = input("Usuário\n➩  ")
                     senha = int(input("Senha\n➩  "))
 
-                    match admin.login_admin(usuário, senha) or usuário == "admin" and senha == 1234:
+                    match admin.login_admin(usuário, senha) or usuário == "admin" and senha == 1234: 
                         case True:
-                            sair2 = False
-                            while sair2 == False:
+                            sair3 = False
+                            while sair3 == False:
                                 os.system("cls")
                                 print("ÁREA ADMIN")
                                 print("Escolha alguma das opções abaixo.\n")
@@ -137,21 +140,21 @@ def Main():
                                         cpf = int(input("CPF\n➩  "))
                                         endereço = input("Endereço\n➩  ")
                                         senhaCad = int(input("Senha\n➩  "))
-
                                         contID += 1
                                         id = contID
                                         admin.cadastro_cliente(nomeCad, senhaCad, datanasc, cpf, endereço, id)
                                         os.system("pause")
+                                        break
                                     
                                     case 2:
                                         os.system("cls")
                                         print("Cadastrar Admins")
                                         usuário = input("Nome de usuário\n➩  ")
                                         senha = int(input("Senha\n➩  "))
-
                                         admin.cadastro_admin(usuário, senha)
                                         os.system("pause")
                                         os.system("cls")
+                                        break
 
                                     case 3:
                                         os.system("cls")
@@ -162,6 +165,7 @@ def Main():
                                         admin.cadastrar_produtos(nomeprod, descprod, preçoprod)
                                         os.system("pause")
                                         os.system("cls")
+                                        break
 
                                     case 4:
                                         os.system("cls")
@@ -169,6 +173,7 @@ def Main():
                                         admin.listar_clientes()
                                         os.system("pause")
                                         os.system("cls")
+                                        break
 
                                     case 5:
                                         os.system("cls")
@@ -176,6 +181,7 @@ def Main():
                                         admin.listar_clientes()
                                         os.system("pause")
                                         os.system("cls")
+                                        break
                                     
                                     case 6:
                                         os.system("cls")
@@ -183,6 +189,7 @@ def Main():
                                         admin.listar_clientes()
                                         os.system("pause")
                                         os.system("cls")
+                                        break
 
                                     case 7:
                                         os.system("cls")
@@ -191,14 +198,15 @@ def Main():
                                         admin.excluir_clientes(id_clienteex)
                                         os.system("pause")
                                         os.system("cls")
+                                        break
                                     
                                     case 8:
                                         os.system("cls")
                                         print("Excluir Admins")
                                         us_adminex = int(input("Insira o nome de usuário do admin que deseja excluir: "))
-                                        
                                         os.system("pause")
                                         os.system("cls")
+                                        break
 
                                     case 9:
                                         os.system("cls")
@@ -207,29 +215,34 @@ def Main():
                                         id_produto = int(input("Digite o ID do produto que deseja excluir\n➩  "))
                                         admin.excluir_produto_loja(id_produto)
                                         os.system("pause")
-                                        os.system("cls")     
-                                    
+                                        os.system("cls")
+                                        break
                                     
                                     case 0:
-                                        sair2 = True
-                                    
+                                        sair3 = True
+                                        break
+                                                                            
                                     case _:
                                         print("Opção inválida.")
                                         os.system("pause")
+                                        break
 
                         case False:
                             os.system("pause")
                             os.system("cls")
+                            break
                             
                 
 #############################################################################################################################################################
 
                 case 3:
                     sair = True
-
+                    break
                 case _:
                     print("Opção inválida.")
+                    break
                 
         except Exception as erro:
             print("Ops, algo deu errado. Tente novamente.")
             print(erro.__class__.__name__)
+            break
